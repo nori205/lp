@@ -67,7 +67,6 @@ p{margin:0}
 .plan .desc{font-size:14px;line-height:1.75}
 .plan .price{font-family:var(--display);font-weight:900;font-size:18px;margin-top:6px}
 .plan .fine{font-size:12px;line-height:1.7}
-.plan .btn{margin-top:12px}
 .hint{font-size:12px;text-align:center;margin-top:-6px}
 .works-cap{font-size:13px;font-weight:700;color:var(--label);margin-bottom:-6px}
 .works{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
@@ -126,12 +125,6 @@ button.btn{border:0;width:100%;cursor:pointer;font-family:inherit}
 .steps .dot{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:700}
 .note{font-size:13px;line-height:1.8}
 
-.tools{padding:48px 28px 40px;display:flex;flex-direction:column;gap:18px}
-.tools h2{font-size:22px;margin-top:6px}
-.tools h3{font-family:var(--body);font-weight:700;font-size:13px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
-.chips li{background:var(--paper);padding:8px 14px;border-radius:999px;font-size:13px}
-.chips.ai li{background:var(--yellow);font-weight:500}
 
 .links{padding:8px 20px 40px;display:flex;flex-direction:column;gap:10px}
 .links .eyebrow{padding:0 8px 6px}
@@ -181,9 +174,20 @@ footer small{font-size:12px;color:var(--paper)}
     <a class="btn" href="https://norikaesoudan.studio.site/">スマホの相談を見る</a>
   </article>
 
+  <article class="card">
+    <div class="num">02</div>
+    <h3>つくったものの一部。</h3>
+    <p>アプリ作成歴7ヶ月で、<br>システムとアプリを40個以上つくりました。<br>無料で試せるものも、有料のものもあります。</p>
+    <a class="btn outline one" href="https://nori205.github.io/apps/">つくったものを見る</a>
+    <details class="more" id="moreApps">
+      <summary><span class="when-closed">ほかのアプリも見る</span><span class="when-open">閉じる</span></summary>
+      <div class="more-body"><h4>暮らしをラクに</h4><ul><li><span class="tag">アプリ</span><div><b>レシピ保管アプリ</b><span>レシピをまとめて管理できる</span></div></li><li><span class="tag">アプリ</span><div><b>レシピ計算アプリ</b><span>材料量を換算してくれる</span></div></li><li><span class="tag">アプリ</span><div><b>子どもの健康管理アプリ</b><span>通院・健康記録を管理</span></div></li><li><span class="tag">アプリ</span><div><b>乗り換え準備アプリ</b><span>スマホ乗り換え前の準備・確認をサポート</span></div></li><li><span class="tag auto">自動化</span><div><b>買取価格チェック→LINE通知</b><span>気になる商品の価格変動を自動で通知（せどり・趣味に）</span></div></li><li><span class="tag auto">自動化</span><div><b>プリント/PDF→カレンダー登録</b><span>プリントやPDFの予定を読み取り自動登録</span></div></li></ul><h4>お店・お仕事に</h4><ul><li><span class="tag">アプリ</span><div><b>シフト管理アプリ</b><span>飲食店の勤怠・シフト管理をラクに</span></div></li><li><span class="tag">アプリ</span><div><b>美容師さん向けカラー調合アプリ</b><span>カラー剤の配合を計算できる</span></div></li><li><span class="tag">アプリ</span><div><b>クーポン管理PWA「Clipo」</b><span>クーポンをすぐ取り出して使える</span></div></li><li><span class="tag auto">自動化</span><div><b>動画→文字起こし・議事録</b><span>音声抽出から議事録作成までを自動化</span></div></li></ul><h4>SNS・発信に</h4><ul><li><span class="tag">アプリ</span><div><b>強調文字画像メーカー</b><span>note・ストーリーの文字を目立たせる画像を作る</span></div></li><li><span class="tag">アプリ</span><div><b>SNSアイコン重ねアプリ</b><span>顔を出さずに写真にアイコンを乗せる</span></div></li><li><span class="tag">アプリ</span><div><b>顔・タイル自動ぼかしツール</b><span>Zoomやスマホで顔を隠したいときに</span></div></li><li><span class="tag">アプリ</span><div><b>名刺管理アプリ「ぶっこみ名鑑」</b><span>もらった名刺やSNSの連絡先を、1か所にまとめて見返せる</span></div></li></ul><button type="button" class="more-close" onclick="document.getElementById('moreApps').open=false;document.getElementById('moreApps').scrollIntoView({block:'center'})">閉じる</button></div>
+    </details>
+  </article>
+
   <article class="card main">
     <div class="card-top">
-      <div class="num">02</div>
+      <div class="num">03</div>
       <span class="badge">相談無料</span>
     </div>
     <h3>仕事と暮らしを、<br>AIでラクに。</h3>
@@ -195,7 +199,6 @@ footer small{font-size:12px;color:var(--paper)}
         <p class="desc">アプリや自動化を、のりがつくります。</p>
         <span class="price">料金は相談のあとで</span>
         <span class="fine">無料相談で内容を見て、料金の目安をお伝えします</span>
-        <a class="btn" href="shindan.html">無料で相談する</a>
       </div>
       <div class="plan">
         <span class="who">自分で作れるようになりたい人へ</span>
@@ -203,20 +206,8 @@ footer small{font-size:12px;color:var(--paper)}
         <p class="desc">Claude Codeの導入から、簡単なアプリ完成まで。</p>
         <span class="price">3時間 10,000円</span>
         <span class="fine">※別途、Claudeの有料プラン（月額）が必要です</span>
-        <a class="btn" href="shindan.html">無料で相談する</a>
       </div>
     </div>
-  </article>
-
-  <article class="card">
-    <div class="num">03</div>
-    <h3>つくったもの。</h3>
-    <p>アプリ作成歴7ヶ月で、<br>システムとアプリを40個以上つくりました。<br>無料で試せるものも、有料のものもあります。</p>
-    <a class="btn outline one" href="https://nori205.github.io/apps/">つくったものの、ほんの一部を見る</a>
-    <details class="more" id="moreApps">
-      <summary><span class="when-closed">ほかのアプリも見る</span><span class="when-open">閉じる</span></summary>
-      <div class="more-body"><h4>暮らしをラクに</h4><ul><li><span class="tag">アプリ</span><div><b>レシピ保管アプリ</b><span>レシピをまとめて管理できる</span></div></li><li><span class="tag">アプリ</span><div><b>レシピ計算アプリ</b><span>材料量を換算してくれる</span></div></li><li><span class="tag">アプリ</span><div><b>子どもの健康管理アプリ</b><span>通院・健康記録を管理</span></div></li><li><span class="tag">アプリ</span><div><b>乗り換え準備アプリ</b><span>スマホ乗り換え前の準備・確認をサポート</span></div></li><li><span class="tag auto">自動化</span><div><b>買取価格チェック→LINE通知</b><span>気になる商品の価格変動を自動で通知（せどり・趣味に）</span></div></li><li><span class="tag auto">自動化</span><div><b>プリント/PDF→カレンダー登録</b><span>プリントやPDFの予定を読み取り自動登録</span></div></li></ul><h4>お店・お仕事に</h4><ul><li><span class="tag">アプリ</span><div><b>シフト管理アプリ</b><span>飲食店の勤怠・シフト管理をラクに</span></div></li><li><span class="tag">アプリ</span><div><b>美容師さん向けカラー調合アプリ</b><span>カラー剤の配合を計算できる</span></div></li><li><span class="tag">アプリ</span><div><b>クーポン管理PWA「Clipo」</b><span>クーポンをすぐ取り出して使える</span></div></li><li><span class="tag auto">自動化</span><div><b>動画→文字起こし・議事録</b><span>音声抽出から議事録作成までを自動化</span></div></li></ul><h4>SNS・発信に</h4><ul><li><span class="tag">アプリ</span><div><b>強調文字画像メーカー</b><span>note・ストーリーの文字を目立たせる画像を作る</span></div></li><li><span class="tag">アプリ</span><div><b>SNSアイコン重ねアプリ</b><span>顔を出さずに写真にアイコンを乗せる</span></div></li><li><span class="tag">アプリ</span><div><b>顔・タイル自動ぼかしツール</b><span>Zoomやスマホで顔を隠したいときに</span></div></li><li><span class="tag">アプリ</span><div><b>名刺管理アプリ「ぶっこみ名鑑」</b><span>もらった名刺やSNSの連絡先を、1か所にまとめて見返せる</span></div></li></ul><button type="button" class="more-close" onclick="document.getElementById('moreApps').open=false;document.getElementById('moreApps').scrollIntoView({block:'center'})">閉じる</button></div>
-    </details>
   </article>
 </section>
 
@@ -234,21 +225,6 @@ footer small{font-size:12px;color:var(--paper)}
   <p class="note">※無料でお答えするのは「できる・できない」と「方法・料金の目安」までです。</p>
   <a class="btn strong" href="shindan.html">無料で相談する</a>
   <p class="hint">お返事は数日以内に、LINEで届きます</p>
-</section>
-
-<section class="tools">
-  <div>
-    <div class="eyebrow">TOOLS</div>
-    <h2>触れるツール</h2>
-  </div>
-  <h3>AI</h3>
-  <ul class="chips ai">
-    <li>Claude Code</li><li>Claude</li><li>Gemini</li><li>NotebookLM</li><li>ChatGPT</li>
-  </ul>
-  <h3>基本操作・その他</h3>
-  <ul class="chips">
-    <li>Googleスプレッドシート</li><li>Googleフォーム</li><li>LINE公式構築</li><li>Notion</li><li>Canva</li><li>CapCut</li><li>Discord</li><li>Zoom</li>
-  </ul>
 </section>
 
 <nav class="links" aria-label="発信先">
