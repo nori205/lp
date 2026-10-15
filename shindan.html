@@ -90,8 +90,11 @@ p{margin:0}
 .opt em{font-style:normal;font-size:12px;font-weight:500;color:var(--ink-soft)}
 .opt input:checked+span{background:var(--yellow);border-color:var(--ink)}
 .opt input:focus-visible+span{outline:3px solid var(--ink);outline-offset:2px}
-.free{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;color:var(--ink-soft)}
-.free textarea,.free input{font:inherit;font-size:16px;font-weight:400;color:var(--ink);border:2px solid var(--camel);border-radius:12px;padding:10px 12px;background:#fff;width:100%}
+.free{display:block;width:100%;min-width:0;font-size:12px;font-weight:700;color:var(--ink-soft)}
+.free[hidden]{display:none}
+.free>span{display:block;margin-bottom:6px}
+.free textarea,.free input{display:block;-webkit-appearance:none;appearance:none;font:inherit;font-size:16px;font-weight:400;line-height:1.6;color:var(--ink);border:2px solid var(--camel);border-radius:12px;padding:10px 12px;background:#fff;width:100%;max-width:100%;min-width:0;min-height:48px}
+.free textarea{min-height:132px;resize:vertical}
 .free textarea:focus,.free input:focus{outline:none;border-color:var(--ink)}
 .err{margin:0;font-size:13px;font-weight:700;color:#8A2A12;min-height:0}
 .err:empty{display:none}
@@ -163,6 +166,7 @@ button.btn:disabled{opacity:.6;cursor:default}
         <label class="opt"><input type="checkbox" name="trouble" value="表や記録を整理したい"><span>表や記録を整理したい</span></label>
         <label class="opt"><input type="checkbox" name="trouble" value="__other_option__"><span>その他</span></label>
       </div>
+      <label class="free" id="troubleOtherBox" hidden><span>「その他」の内容</span><input type="text" name="troubleOther" id="troubleOther" placeholder="例：SNSの投稿づくりが大変"></label>
     </fieldset>
 
     <fieldset class="q">
@@ -239,7 +243,7 @@ button.btn:disabled{opacity:.6;cursor:default}
 (function(){
   var FORM='https://docs.google.com/forms/d/e/1FAIpQLSc2SMFCYSYuLtRvOqhmR7regEMMHPIRfhOK58QP3G7SmbLC4A/formResponse';
   var ENTRY={trouble:'entry.1149795467', detail:'entry.2061564649', now:'entry.1284308124', tools:'entry.60046213', wish:'entry.1853130336', name:'entry.164096466', via:'entry.1467823972', contact:'entry.868039591'};
-  var f=document.getElementById('quiz'), err=document.getElementById('quizErr'), btn=document.getElementById('sendBtn'), done=document.getElementById('done'), contact=document.getElementById('contact'), contactLabel=document.getElementById('contactLabel');
+  var f=document.getElementById('quiz'), err=document.getElementById('quizErr'), btn=document.getElementById('sendBtn'), done=document.getElementById('done'), contact=document.getElementById('contact'), contactLabel=document.getElementById('contactLabel'), otherBox=document.getElementById('troubleOtherBox');
   function vals(n){return Array.prototype.map.call(f.querySelectorAll('input[name="'+n+'"]:checked'),function(x){return x.value;});}
   function text(n){return f.elements[n].value.trim();}
   function syncContact(){
@@ -247,9 +251,16 @@ button.btn:disabled{opacity:.6;cursor:default}
     if(via==='メール'){ contactLabel.textContent='メールアドレス'; contact.type='email'; contact.placeholder='例：nori@example.com'; }
     else if(via==='InstagramのDM'){ contactLabel.textContent='Instagramのアカウント名'; contact.type='text'; contact.placeholder='例：@nori_05_25'; }
   }
+  function otherChecked(){return vals('trouble').indexOf('__other_option__')>=0;}
+  function syncOther(){
+    var show=otherChecked();
+    if(show===!otherBox.hidden) return;
+    otherBox.hidden=!show;
+    if(show) document.getElementById('troubleOther').focus();
+  }
   function missing(){
     var m=[];
-    if(!vals('trouble').length) m.push('Q1');
+    if(!vals('trouble').length || (otherChecked() && !text('troubleOther'))) m.push('Q1');
     if(!text('detail')) m.push('Q2');
     if(!vals('now').length) m.push('Q3');
     if(!vals('tools').length) m.push('Q4');
@@ -258,15 +269,15 @@ button.btn:disabled{opacity:.6;cursor:default}
     if(!vals('via').length || !text('contact')) m.push('Q7');
     return m;
   }
-  f.addEventListener('change',function(){ syncContact(); if(!missing().length) err.textContent=''; });
+  f.addEventListener('change',function(){ syncContact(); syncOther(); if(!missing().length) err.textContent=''; });
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var m=missing();
     if(m.length){ err.textContent=m.join('・')+' を答えてください'; if(err.scrollIntoView) err.scrollIntoView({block:'center'}); return; }
     var body=new URLSearchParams();
     ['trouble','now','tools','wish','via'].forEach(function(n){ vals(n).forEach(function(v){ body.append(ENTRY[n],v); }); });
-    // Q1の「その他」はフォーム側が自由記入つきなので、記入欄の中身も送る
-    if(vals('trouble').indexOf('__other_option__')>=0) body.append(ENTRY.trouble+'.other_option_response','その他（Q2に記入）');
+    // Q1の「その他」はフォーム側の自由記入欄に、ページの記入欄の中身を送る
+    if(otherChecked()) body.append(ENTRY.trouble+'.other_option_response',text('troubleOther'));
     ['detail','name','contact'].forEach(function(n){ body.append(ENTRY[n],text(n)); });
     btn.disabled=true; btn.textContent='送信中…';
     fetch(FORM,{method:'POST',mode:'no-cors',body:body}).then(function(){
