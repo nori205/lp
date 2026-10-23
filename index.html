@@ -132,6 +132,24 @@ button.btn{border:0;width:100%;cursor:pointer;font-family:inherit}
 .steps li{background:var(--paper);border-radius:18px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;font-size:15px;line-height:1.75}
 .steps .dot{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:700}
 .note{font-size:13px;line-height:1.8}
+.sample{background:var(--paper);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px;font-size:14px;line-height:1.8}
+.sample .label{align-self:flex-start;background:var(--ink);color:var(--paper);font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px}
+.sample h3{font-family:var(--body);font-size:13px;font-weight:700;color:var(--label)}
+.sample .ask{background:var(--cream);border-radius:12px;padding:10px 14px;font-weight:700}
+.sample ul{margin:0;padding-left:1.2em}
+.sample .warn{font-weight:700}
+.sample .foot{font-size:12px;line-height:1.75;border-top:1px dashed var(--camel);padding-top:10px}
+
+.profile{display:flex;gap:14px;align-items:flex-start;padding:28px 28px 32px;background:var(--paper)}
+.profile img{width:56px;height:56px;border-radius:50%;flex-shrink:0;object-fit:cover}
+.profile p{font-size:14px;line-height:1.8}
+.profile b{font-family:var(--display);font-size:16px}
+
+.fixed-cta{display:none}
+@media (max-width:560px){
+  .fixed-cta{display:flex;position:fixed;left:16px;right:16px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:10;box-shadow:0 4px 16px rgba(61,42,30,.25)}
+  footer{padding-bottom:calc(48px + 76px + env(safe-area-inset-bottom,0px))}
+}
 
 
 .links{padding:8px 20px 40px;display:flex;flex-direction:column;gap:10px}
@@ -162,7 +180,7 @@ footer small{font-size:12px;color:var(--paper)}
   <h1>「これ、<br>もっとラクに<br>できない？」</h1>
   <p class="lead">仕事や暮らしのめんどうなこと。<br>AIで一緒にラクにする方法を考えます。</p>
   <div class="stats">
-    <div class="stat"><small>アプリ・システム</small><b>40<span>個+</span></b></div>
+    <div class="stat"><small>アプリ30個＋自動化</small><b>40<span>以上</span></b></div>
     <div class="stat"><small>note販売</small><b>300<span>部+</span></b></div>
   </div>
 </header>
@@ -191,13 +209,15 @@ footer small{font-size:12px;color:var(--paper)}
   <article class="card">
     <div class="num">02</div>
     <h3>アプリで、ラクに。</h3>
-    <p>スマホだけで動くアプリでも、<br>けっこういろんなことがラクになります。<br><br>アプリ作成歴7ヶ月で、<br>システムとアプリを40個以上つくりました。<br>無料で試せるものも、有料のものもあります。</p>
+    <p>スマホだけで動くアプリでも、<br>けっこういろんなことがラクになります。<br><br>アプリ作成歴7ヶ月で、<br>アプリ30個、自動化も合わせると<br>40以上つくりました。<br>無料で試せるものも、有料のものもあります。</p>
     <a class="btn outline one" href="https://nori205.github.io/apps/">今までつくったものの一部を見る</a>
     <details class="more" id="moreApps">
       <summary><span class="when-closed">ほかのアプリも見る</span><span class="when-open">閉じる</span></summary>
       <div class="more-body"><h4>暮らしをラクに</h4><ul><li><span class="tag">アプリ</span><div><b>レシピ保管アプリ</b><span>レシピをまとめて管理できる</span></div></li><li><span class="tag">アプリ</span><div><b>レシピ計算アプリ</b><span>材料量を換算してくれる</span></div></li><li><span class="tag">アプリ</span><div><b>子どもの健康管理アプリ</b><span>通院・健康記録を管理</span></div></li><li><span class="tag">アプリ</span><div><b>乗り換え準備アプリ</b><span>スマホ乗り換え前の準備・確認をサポート</span></div></li><li><span class="tag auto">自動化</span><div><b>買取価格チェック→LINE通知</b><span>気になる商品の価格変動を自動で通知（せどり・趣味に）</span></div></li><li><span class="tag auto">自動化</span><div><b>プリント/PDF→カレンダー登録</b><span>プリントやPDFの予定を読み取り自動登録</span></div></li></ul><h4>お店・お仕事に</h4><ul><li><span class="tag">アプリ</span><div><b>シフト管理アプリ</b><span>飲食店の勤怠・シフト管理をラクに</span></div></li><li><span class="tag">アプリ</span><div><b>美容師さん向けカラー調合アプリ</b><span>カラー剤の配合を計算できる</span></div></li><li><span class="tag">アプリ</span><div><b>クーポン管理PWA「Clipo」</b><span>クーポンをすぐ取り出して使える</span></div></li><li><span class="tag auto">自動化</span><div><b>動画→文字起こし・議事録</b><span>音声抽出から議事録作成までを自動化</span></div></li></ul><h4>SNS・発信に</h4><ul><li><span class="tag">アプリ</span><div><b>強調文字画像メーカー</b><span>note・ストーリーの文字を目立たせる画像を作る</span></div></li><li><span class="tag">アプリ</span><div><b>SNSアイコン重ねアプリ</b><span>顔を出さずに写真にアイコンを乗せる</span></div></li><li><span class="tag">アプリ</span><div><b>顔・タイル自動ぼかしツール</b><span>Zoomやスマホで顔を隠したいときに</span></div></li><li><span class="tag">アプリ</span><div><b>名刺管理アプリ「ぶっこみ名鑑」</b><span>もらった名刺やSNSの連絡先を、1か所にまとめて見返せる</span></div></li></ul><button type="button" class="more-close" onclick="document.getElementById('moreApps').open=false;document.getElementById('moreApps').scrollIntoView({block:'center'})">閉じる</button></div>
     </details>
   </article>
+
+  <a class="btn strong" href="shindan.html">無料で相談する</a>
 
   <article class="card main">
     <div class="card-top">
@@ -213,6 +233,7 @@ footer small{font-size:12px;color:var(--paper)}
         <li>どんな方法がありそうか（ざっくり）</li>
       </ul>
       <p>をお返事します。</p>
+      <p>道具の紹介で済む相談は、使い方の入り口までお返事に書くことがあります。</p>
     </div>
     <p class="then">▼ その先は、2つから選べます（有料）</p>
     <div class="plans">
@@ -234,6 +255,11 @@ footer small{font-size:12px;color:var(--paper)}
   </article>
 </section>
 
+<section class="profile" aria-label="のりについて">
+  <img src="nori-icon.jpg" alt="のりのアイコン" width="56" height="56">
+  <p><b>のり</b>｜非エンジニアです。今年2月からAIを触り始めて、アプリ30個、自動化も合わせると40以上つくりました。スマホのりかえ相談も100件以上やっています。</p>
+</section>
+
 <section class="flow" id="shindan">
   <div>
     <div class="eyebrow">FREE CONSULTATION</div>
@@ -245,7 +271,22 @@ footer small{font-size:12px;color:var(--paper)}
     <li><span class="dot">3</span><div><b>のりがお返事</b><br>AIで解決できそうかと、どんな方法がありそうかを、メールかInstagramのDMでお伝えします。</div></li>
   </ol>
 
-  <p class="note">※無料でお答えするのは「AIで解決できそうか」と「どんな方法がありそうか」までです。くわしいやり方のアドバイスや、制作・サポートは有料になります。</p>
+  <div class="sample">
+    <span class="label">実際の相談から（匿名）</span>
+    <h3>お悩み：</h3>
+    <p class="ask">パスワードがメモやノートにバラバラで、整理したい</p>
+    <h3>のりのお返事：</h3>
+    <p>これはAIで解決するお悩みじゃないです。<br>パスワードマネージャー向きの相談です。</p>
+    <ul>
+      <li>iPhoneの人は「パスワード」アプリ（iCloudキーチェーン）</li>
+      <li>Androidやパソコンの人は Googleパスワードマネージャー など</li>
+    </ul>
+    <p>まずよく使うものを3〜5個だけ登録して、顔認証や指紋で開けるようにするところからで大丈夫です。</p>
+    <p class="warn">※大事な注意：パスワードそのものを、AIや私に送らないでください。<br>整理はマネージャーの中でやります。</p>
+    <p class="foot">※こういう「道具を紹介すれば済む相談」は、やり方の入り口まで本当のお返事に書いています。<br>作ったり、一緒に進めたりが必要な相談は、詳しい手順は有料になります。</p>
+  </div>
+
+  <p class="note">※無料でお答えするのは「AIで解決できそうか」と「どんな方法がありそうか」までです。くわしいやり方のアドバイスや、制作・サポートは有料になります。道具の紹介で済む相談は、使い方の入り口までお返事に書くことがあります。</p>
   <a class="btn strong" href="shindan.html">無料で相談する</a>
   <p class="hint">お返事は数日以内に届きます</p>
 </section>
@@ -265,6 +306,9 @@ footer small{font-size:12px;color:var(--paper)}
   <div class="closing">めんどうなこと、<br>まずは気軽に聞いてください。</div>
   <small>© のり</small>
 </footer>
+
+<a class="btn strong fixed-cta" href="shindan.html">無料で相談する</a>
+
 
 </div>
 </body>
